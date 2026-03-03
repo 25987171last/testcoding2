@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>National Youth Ministry Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {font-family: Arial; background:#f2f5f9; margin:0;}
+header {background:#003366; color:white; text-align:center; padding:20px;}
+nav {background: #002244; padding: 10px;text-align: center;}
+nav a{color: white; text-decoration: none; margin: 0 15px; text-align: center;}
+section {max-width:700px; margin:30px auto; background:white; padding:25px; border-radius:8px;}
+label {display:block; margin-top:15px; font-weight:bold;}
+input, select, textarea {width:100%; padding:8px; margin-top:5px;}
+button {margin-top:20px; padding:10px 20px; background:#0055a5; color:white; border:none; cursor:pointer;}
+button:hover {background:#002244;}
+.hidden {display:none;}
+</style>
+
+<script>
+function toggleOtherDistrict() {
+    var districtSelect = document.getElementById("district");
+    var otherField = document.getElementById("otherDistrictField");
+
+    if (districtSelect.value === "Other") {
+        otherField.style.display = "block";
+    } else {
+        otherField.style.display = "none";
+    }
+}
+</script>
+
+</head>
+<body>
+
+<header>
+<h1>Wesleyan Church of Papua New Guinea</h1>
+<p>National Youth Ministry Registration</p>
+</header>
+
+<nav>
+    <a href="index" class="btn">Home Page</a>
+    <a href="#">Save</a>
+</nav>
+
+<section>
+<h2>Youth Registration Form</h2>
+
+<form action="process.php" method="POST" enctype="multipart/form-data">
+
+<label>Given Name</label>
+<input type="text" name="given_name" required>
+
+<label>Surname</label>
+<input type="text" name="surname" required>
+
+<label>Local Church</label>
+<input type="text" name="local_church" required>
+
+<label>District</label>
+<select name="district" id="district" onchange="toggleOtherDistrict()" required>
+    <option value="">-- Select District --</option>
+    <option value="Southern">Southern</option>
+    <option value="Morobe">Morobe</option>
+    <option value="Jiwaka">Jiwaka</option>
+    <option value="Western Highlands">Western Highlands</option>
+    <option value="Wenge">Wenge</option>
+    <option value="North Polu">North Polu</option>
+    <option value="South Polu">South Polu</option>
+    <option value="Fuga">Fuga</option>
+    <option value="Other">Other (Specify)</option>
+</select>
+
+<div id="otherDistrictField" class="hidden">
+    <label>Specify District</label>
+    <input type="text" name="other_district">
+</div>
+
+<label>Date of Birth</label>
+<input type="date" name="dob" required>
+
+<hr>
+
+<h2>Your Concern Form</h2>
+
+<label>Upload Attachment (PDF, JPG, PNG)</label>
+<input type="file" name="attachment" accept=".pdf,.jpg,.jpeg,.png">
+
+<label>Comments (Maximum 100 words)</label>
+<textarea name="comments" rows="5" required></textarea>
+
+<button type="submit">Submit Registration</button>
+
+</form>
+</section>
+
+</body>
+</html>
